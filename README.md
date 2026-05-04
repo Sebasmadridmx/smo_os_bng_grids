@@ -22,7 +22,7 @@ No external dependencies. Works in InfoWorks ICM 2027 embedded Ruby.
 <tr>
 <td align="center" width="110">
 <a href="https://buymeacoffee.com/smadrid">
-<img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://buymeacoffee.com/smadrid&bgcolor=FFDD00&color=000000&margin=6" width="90" alt="QR code — buymeacoffee.com/smadrid"/>
+<img src="https://raw.githubusercontent.com/Sebasmadridmx/SMO-WGS84-TO-BNG/main/temp_png/buymecoffeeqr.png" width="90" alt="QR code — buymeacoffee.com/smadrid"/>
 </a>
 </td>
 <td align="left">
@@ -248,7 +248,7 @@ If it saves you time on a project, a coffee goes a long way.
 <br/>
 
 <a href="https://buymeacoffee.com/smadrid">
-  <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://buymeacoffee.com/smadrid&bgcolor=FFDD00&color=000000&margin=8" width="160" alt="Scan to buy Sebastian a coffee"/>
+  <img src="https://raw.githubusercontent.com/Sebasmadridmx/SMO-WGS84-TO-BNG/main/temp_png/buymecoffeeqr.png" width="160" alt="Scan to buy Sebastian a coffee"/>
 </a>
 
 <br/><br/>
