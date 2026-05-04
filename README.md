@@ -18,20 +18,11 @@ No external dependencies. Works in InfoWorks ICM 2027 embedded Ruby.
 
 <div align="center">
 
-<table>
-<tr>
-<td align="center" width="110">
 <a href="https://buymeacoffee.com/smadrid">
-<img src="https://raw.githubusercontent.com/Sebasmadridmx/SMO-WGS84-TO-BNG/main/temp_png/buymecoffeeqr.png" width="360" alt="QR code — buymeacoffee.com/smadrid"/>
+<img src="https://raw.githubusercontent.com/Sebasmadridmx/SMO-WGS84-TO-BNG/main/temp_png/buymecoffeeqr.png" width="250" alt="QR code — buymeacoffee.com/smadrid"/>
 </a>
-</td>
-<td align="left">
-<strong>☕ &nbsp;Find this gem useful?</strong><br/>
-Built and maintained freely for the hydraulic modelling community.<br/>
-Scan the QR code or visit <a href="https://buymeacoffee.com/smadrid"><strong>buymeacoffee.com/smadrid</strong></a> to support the work.
-</td>
-</tr>
-</table>
+
+[buymeacoffee.com/smadrid](https://buymeacoffee.com/smadrid)
 
 </div>
 
@@ -248,16 +239,12 @@ If it saves you time on a project, a coffee goes a long way.
 <br/>
 
 <a href="https://buymeacoffee.com/smadrid">
-  <img src="https://raw.githubusercontent.com/Sebasmadridmx/SMO-WGS84-TO-BNG/main/temp_png/buymecoffeeqr.png" width="640" alt="Scan to buy Sebastian a coffee"/>
+  <img src="https://raw.githubusercontent.com/Sebasmadridmx/SMO-WGS84-TO-BNG/main/temp_png/buymecoffeeqr.png" width="250" alt="Scan to buy Sebastian a coffee"/>
 </a>
 
-<br/><br/>
+[buymeacoffee.com/smadrid](https://buymeacoffee.com/smadrid)
 
-<a href="https://buymeacoffee.com/smadrid">
-  <img src="https://img.shields.io/badge/Buy%20Me%20a%20Coffee-smadrid-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black" alt="Buy Me a Coffee"/>
-</a>
-
-<br/><br/>
+<br/>
 
 *Built by **Sebastian Madrid Ontiveros** &nbsp;·&nbsp; Edinburgh &nbsp;·&nbsp; Hydraulic Modeller*
 
