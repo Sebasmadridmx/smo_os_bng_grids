@@ -1,30 +1,70 @@
+<div align="center">
+
 # smo_os_bng_grids
 
-Pure Ruby gem for working with **Ordnance Survey British National Grid (BNG)** squares.
-Point lookup, spatial search, bounds, corner coordinates, and Shapefile export — no external dependencies.
+**Pure Ruby library for Ordnance Survey British National Grid (BNG) squares.**
 
-Developed by **Sebastian Madrid Ontiveros**.
-Contains OS data. Crown copyright and database right 2025.
-Licensed under the [Open Government Licence v3.0](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/).
+Point lookup · Spatial search · Bounds · Corner coordinates · Shapefile export
+
+No external dependencies. Works in InfoWorks ICM 2027 embedded Ruby.
 
 [![Gem Version](https://badge.fury.io/rb/smo_os_bng_grids.svg)](https://badge.fury.io/rb/smo_os_bng_grids)
+[![License: OGL v3](https://img.shields.io/badge/License-OGL%20v3-blue.svg)](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)
+[![Ruby](https://img.shields.io/badge/Ruby-stdlib%20only-red.svg)](https://www.ruby-lang.org)
+
+---
+
+*Built by **Sebastian Madrid Ontiveros** to support hydraulic modelling and flood risk workflows across the UK.*
+
+*If this gem saves you time, consider buying me a coffee.*
+
+<a href="https://buymeacoffee.com/smadrid">
+  <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https://buymeacoffee.com/smadrid&bgcolor=ffffff&color=000000&margin=2" alt="Buy Me a Coffee — scan to support" width="120"/>
+</a>
+
+[buymeacoffee.com/smadrid](https://buymeacoffee.com/smadrid)
+
+</div>
+
+---
+
+## Overview
+
+`smo_os_bng_grids` provides hardcoded geometry sourced directly from the **OS BNG Grids GeoPackage** (EPSG:27700), covering all five standard resolutions from 100 km down to 1 km — 910,091 grid squares in total. The library is pure Ruby standard library with no runtime downloads, making it suitable for use inside InfoWorks ICM 2027's embedded Ruby environment.
+
+Contains OS data. Crown copyright and database right 2025. Licensed under the [Open Government Licence v3.0](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/).
 
 ---
 
 ## Features
 
-- **Hardcoded geometry** sourced directly from the OS BNG Grids GeoPackage (EPSG:27700)
-- Grid squares at **100km, 50km, 10km, 5km, and 1km** resolutions (910,091 squares total)
-- **Point lookup** — find the grid ref containing any easting/northing at any resolution
-- **Spatial search** — find all tiles intersecting a radius or bounding box around a point
-- **Bounds** — retrieve min/max easting/northing for any grid ref
-- **Corner points** — NW → NE → SE → SW → NW, ready for InfoWorks ICM `boundary_array`
-- **Shapefile export** — pure Ruby SHP/SHX/DBF/PRJ writer, no GDAL required
-- **Pure Ruby stdlib only** — works in InfoWorks ICM 2027 embedded Ruby
+| Feature | Description |
+|---|---|
+| **Point lookup** | Find the grid reference containing any easting/northing at any resolution |
+| **Spatial search** | All tiles intersecting a radius or bounding box, with distance in metres |
+| **Bounds** | Min/max easting and northing for any grid reference string |
+| **Corner points** | NW → NE → SE → SW → NW, ready for ICM `boundary_array` |
+| **Shapefile export** | Pure Ruby SHP/SHX/DBF/PRJ writer. No GDAL required |
+| **Grid validation** | Check whether any grid reference string is valid |
+| **Pure stdlib** | No gems, no GDAL, no external dependencies |
+
+---
+
+## Grid resolutions
+
+| Resolution | Count | Example | Square size |
+|---|---|---|---|
+| 100 km | 91 | `NT` | 100 km × 100 km |
+| 50 km | 364 | `NTNW` | 50 km × 50 km |
+| 10 km | 9,100 | `NT27` | 10 km × 10 km |
+| 5 km | 36,400 | `NT27SE` | 5 km × 5 km |
+| 1 km | 910,000 | `NT2573` | 1 km × 1 km |
 
 ---
 
 ## Installation
+
+Add to your `Gemfile`:
 
 ```ruby
 gem "smo_os_bng_grids"
@@ -63,30 +103,18 @@ SmoOsBngGrids::Grid.bounds("NT27")
 
 ---
 
-## Grid resolutions
-
-| Resolution | Count  | Example ref | Square size     |
-|-----------|--------|-------------|-----------------|
-| 100km     | 91     | `NT`        | 100km × 100km   |
-| 50km      | 364    | `NTNW`      | 50km × 50km     |
-| 10km      | 9,100  | `NT27`      | 10km × 10km     |
-| 5km       | 36,400 | `NT27SE`    | 5km × 5km       |
-| 1km       | 910,000| `NT2573`    | 1km × 1km       |
-
----
-
 ## Listing grid squares
 
 ```ruby
 lister = SmoOsBngGrids::Lister.new
 
-# All 100km squares
+# All 100 km squares
 lister.list("100km")
 
-# All 10km squares within NT
+# All 10 km squares within NT
 lister.list("10km", within: "NT")
 
-# All 1km squares within NT27
+# All 1 km squares within NT27
 lister.list("1km", within: "NT27")
 ```
 
@@ -116,18 +144,18 @@ Find all tiles intersecting a radius or bounding box around a point:
 ```ruby
 lister = SmoOsBngGrids::Lister.new
 
-# All 10km tiles within 12km of Edinburgh
+# All 10 km tiles within 12 km of Edinburgh
 tiles = lister.search(325000, 673000, resolution: "10km", radius: 12000)
 tiles.each { |t| puts "#{t[:ref]}  #{t[:distance_m]} m" }
 
-# All 1km tiles within 1.5km of Edinburgh
+# All 1 km tiles within 1.5 km of Edinburgh
 lister.search(325000, 673000, resolution: "1km", radius: 1500)
 
-# All 5km tiles within a 15km box around Edinburgh
+# All 5 km tiles within a 15 km box around Edinburgh
 lister.search(325000, 673000, resolution: "5km", box: 15000)
 ```
 
-Radius search also returns `:distance_m` — `0.0` when the point is inside the tile.
+Radius search returns `:distance_m` for each entry — `0.0` when the point falls inside the tile.
 
 ---
 
@@ -149,15 +177,15 @@ flat_xy = tile[:points].flatten
 
 # Convert a ref string to a full entry
 entry = lister.entry_for("NT27SE")
-entry[:points]  # => [[325000, 675000], [330000, 675000], [330000, 670000], [325000, 670000], [325000, 675000]]
+entry[:points]
+# => [[325000, 675000], [330000, 675000], [330000, 670000], [325000, 670000], [325000, 675000]]
 ```
 
 ---
 
 ## Shapefile export
 
-Export any set of entries to ESRI Shapefile format (OSGB36 / EPSG:27700).
-Pure Ruby — no GDAL, no external gems, works in InfoWorks ICM 2027.
+Export any set of entries to ESRI Shapefile format (OSGB36 / EPSG:27700). Pure Ruby, no GDAL, no external gems. Produces `.shp`, `.shx`, `.dbf`, and `.prj` files — open directly in QGIS or ArcGIS.
 
 ```ruby
 lister = SmoOsBngGrids::Lister.new
@@ -177,8 +205,6 @@ found.each do |res, ref|
 end
 ```
 
-Produces `.shp`, `.shx`, `.dbf`, `.prj` — open directly in QGIS or ArcGIS.
-
 ---
 
 ## Grid reference validation
@@ -195,14 +221,25 @@ SmoOsBngGrids::Grid.valid?("ZZ")      # => false
 ## Data
 
 All geometry is hardcoded from the **OS BNG Grids GeoPackage** published by Ordnance Survey.
+
 Source: [github.com/OrdnanceSurvey/osbng-grids](https://github.com/OrdnanceSurvey/osbng-grids)
 
-Contains OS data. Crown copyright and database right 2025.
-Licensed under the Open Government Licence v3.0.
+Contains OS data. Crown copyright and database right 2025. Licensed under the [Open Government Licence v3.0](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/).
 
 ---
 
-## Attribution
+<div align="center">
 
-Built by **Sebastian Madrid Ontiveros** to support hydraulic modelling and flood risk workflows in the UK.
-If this gem saves you time, consider [buying Sebastian a coffee](https://buymeacoffee.com/smadrid).
+## Support this project
+
+*This gem is free and open source. If it saves you time on a project, a coffee goes a long way.*
+
+<a href="https://buymeacoffee.com/smadrid">
+  <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://buymeacoffee.com/smadrid&bgcolor=ffffff&color=000000&margin=2" alt="Buy Me a Coffee — scan to support" width="150"/>
+</a>
+
+**[buymeacoffee.com/smadrid](https://buymeacoffee.com/smadrid)**
+
+*Built by Sebastian Madrid Ontiveros · Edinburgh*
+
+</div>
