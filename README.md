@@ -1,5 +1,3 @@
-<div align="center">
-
 # smo_os_bng_grids
 
 **Pure Ruby library for Ordnance Survey British National Grid (BNG) squares.**
@@ -8,21 +6,32 @@ Point lookup · Spatial search · Bounds · Corner coordinates · Shapefile expo
 
 No external dependencies. Works in InfoWorks ICM 2027 embedded Ruby.
 
+<br>
+
 [![Gem Version](https://badge.fury.io/rb/smo_os_bng_grids.svg)](https://badge.fury.io/rb/smo_os_bng_grids)
-[![License: OGL v3](https://img.shields.io/badge/License-OGL%20v3-blue.svg)](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)
-[![Ruby](https://img.shields.io/badge/Ruby-stdlib%20only-red.svg)](https://www.ruby-lang.org)
+[![License: OGL v3](https://img.shields.io/badge/License-OGL%20v3-0076D6?style=flat&logo=gov.uk&logoColor=white)](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)
+[![Ruby](https://img.shields.io/badge/Ruby-stdlib%20only-CC342D?style=flat&logo=ruby&logoColor=white)](https://www.ruby-lang.org)
+[![ICM](https://img.shields.io/badge/InfoWorks%20ICM-2027%20compatible-005F73?style=flat)](https://www.autodesk.com/products/infoworks-icm)
+[![OS Data](https://img.shields.io/badge/OS%20Data-Crown%20copyright%202025-003087?style=flat)](https://www.ordnancesurvey.co.uk)
 
----
+<br>
 
-*Built by **Sebastian Madrid Ontiveros** to support hydraulic modelling and flood risk workflows across the UK.*
+<div align="center">
 
-*If this gem saves you time, consider buying me a coffee.*
-
+<table>
+<tr>
+<td align="center" width="110">
 <a href="https://buymeacoffee.com/smadrid">
-  <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https://buymeacoffee.com/smadrid&bgcolor=ffffff&color=000000&margin=2" alt="Buy Me a Coffee — scan to support" width="120"/>
+<img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://buymeacoffee.com/smadrid&bgcolor=FFDD00&color=000000&margin=6" width="90" alt="QR code — buymeacoffee.com/smadrid"/>
 </a>
-
-[buymeacoffee.com/smadrid](https://buymeacoffee.com/smadrid)
+</td>
+<td align="left">
+<strong>☕ &nbsp;Find this gem useful?</strong><br/>
+Built and maintained freely for the hydraulic modelling community.<br/>
+Scan the QR code or visit <a href="https://buymeacoffee.com/smadrid"><strong>buymeacoffee.com/smadrid</strong></a> to support the work.
+</td>
+</tr>
+</table>
 
 </div>
 
@@ -30,9 +39,10 @@ No external dependencies. Works in InfoWorks ICM 2027 embedded Ruby.
 
 ## Overview
 
-`smo_os_bng_grids` provides hardcoded geometry sourced directly from the **OS BNG Grids GeoPackage** (EPSG:27700), covering all five standard resolutions from 100 km down to 1 km — 910,091 grid squares in total. The library is pure Ruby standard library with no runtime downloads, making it suitable for use inside InfoWorks ICM 2027's embedded Ruby environment.
+`smo_os_bng_grids` provides hardcoded geometry sourced directly from the **OS BNG Grids GeoPackage** (EPSG:27700), covering all five standard resolutions from 100 km down to 1 km — 910,091 grid squares in total. The library uses pure Ruby standard library with no runtime downloads, making it fully compatible with InfoWorks ICM 2027's embedded Ruby environment.
 
-Contains OS data. Crown copyright and database right 2025. Licensed under the [Open Government Licence v3.0](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/).
+> Contains OS data. Crown copyright and database right 2025.
+> Licensed under the [Open Government Licence v3.0](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/).
 
 ---
 
@@ -155,7 +165,7 @@ lister.search(325000, 673000, resolution: "1km", radius: 1500)
 lister.search(325000, 673000, resolution: "5km", box: 15000)
 ```
 
-Radius search returns `:distance_m` for each entry — `0.0` when the point falls inside the tile.
+Radius search returns `:distance_m` for each entry. Returns `0.0` when the point falls inside the tile.
 
 ---
 
@@ -185,7 +195,7 @@ entry[:points]
 
 ## Shapefile export
 
-Export any set of entries to ESRI Shapefile format (OSGB36 / EPSG:27700). Pure Ruby, no GDAL, no external gems. Produces `.shp`, `.shx`, `.dbf`, and `.prj` files — open directly in QGIS or ArcGIS.
+Export any set of entries to ESRI Shapefile format (OSGB36 / EPSG:27700). Pure Ruby — no GDAL, no external gems. Produces `.shp`, `.shx`, `.dbf`, and `.prj` files, ready to open directly in QGIS or ArcGIS.
 
 ```ruby
 lister = SmoOsBngGrids::Lister.new
@@ -230,16 +240,25 @@ Contains OS data. Crown copyright and database right 2025. Licensed under the [O
 
 <div align="center">
 
-## Support this project
+### ☕ &nbsp;Support this project
 
-*This gem is free and open source. If it saves you time on a project, a coffee goes a long way.*
+This gem is free and open source, built for the hydraulic modelling and flood risk community across the UK.<br/>
+If it saves you time on a project, a coffee goes a long way.
+
+<br/>
 
 <a href="https://buymeacoffee.com/smadrid">
-  <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://buymeacoffee.com/smadrid&bgcolor=ffffff&color=000000&margin=2" alt="Buy Me a Coffee — scan to support" width="150"/>
+  <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://buymeacoffee.com/smadrid&bgcolor=FFDD00&color=000000&margin=8" width="160" alt="Scan to buy Sebastian a coffee"/>
 </a>
 
-**[buymeacoffee.com/smadrid](https://buymeacoffee.com/smadrid)**
+<br/><br/>
 
-*Built by Sebastian Madrid Ontiveros · Edinburgh*
+<a href="https://buymeacoffee.com/smadrid">
+  <img src="https://img.shields.io/badge/Buy%20Me%20a%20Coffee-smadrid-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black" alt="Buy Me a Coffee"/>
+</a>
+
+<br/><br/>
+
+*Built by **Sebastian Madrid Ontiveros** &nbsp;·&nbsp; Edinburgh &nbsp;·&nbsp; Hydraulic Modeller*
 
 </div>
