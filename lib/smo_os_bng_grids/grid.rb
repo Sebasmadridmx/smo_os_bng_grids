@@ -162,7 +162,7 @@ module SmoOsBngGrids
     def self.validate_resolution!(res)
       return if VALID_RESOLUTIONS.include?(res)
 
-      raise ArgumentError, "Unknown resolution #{res.inspect}. Valid: #{VALID_RESOLUTIONS.join(', ')}"
+      raise ArgumentError, format(MSG_INVALID_RESOLUTION, res.inspect)
     end
 
     def self.validate_coords!(easting, northing)

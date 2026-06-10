@@ -6,7 +6,7 @@ Gem::Specification.new do |spec|
   spec.name          = "smo_os_bng_grids"
   spec.version       = SmoOsBngGrids::VERSION
   spec.authors       = ["Sebastian Madrid Ontiveros"]
-  spec.email         = []
+  spec.email         = ["sebasmadrid20@hotmail.com"]
 
   spec.summary       = "OS BNG grid squares for Ruby. Point lookup, bounds, and Shapefile export."
   spec.description   = <<~DESC
@@ -26,6 +26,6 @@ Gem::Specification.new do |spec|
   spec.license       = "OGL-UK-3.0"
   spec.required_ruby_version = ">= 2.7.0"
 
-  spec.files         = Dir["lib/**/*.rb", "README.md", "LICENSE"]
+  spec.files         = Dir["lib/**/*.rb", "README.md", "LICENSE", "CHANGELOG.md"]
   spec.require_paths = ["lib"]
 end

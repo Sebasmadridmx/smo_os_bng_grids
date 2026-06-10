@@ -33,8 +33,8 @@ module SmoOsBngGrids
     # @return [Array<Hash>] matching entries, each with :ref, :min_e, :min_n,
     #                       :max_e, :max_n, :points, :distance_m (circle only)
     def search(easting, northing, resolution: "10km", radius: nil, box: nil)
-      raise ArgumentError, "Provide radius: or box: (not both)" if radius.nil? && box.nil?
-      raise ArgumentError, "Provide radius: or box: (not both)" if radius && box
+      raise ArgumentError, MSG_PROVIDE_RADIUS_OR_BOX if radius.nil? && box.nil?
+      raise ArgumentError, MSG_PROVIDE_RADIUS_OR_BOX if radius && box
 
       Grid.validate_coords!(easting, northing)
       validate_resolution!(resolution)
@@ -153,7 +153,7 @@ module SmoOsBngGrids
     def validate_resolution!(res)
       return if VALID_RESOLUTIONS.include?(res)
 
-      raise ArgumentError, "Unknown resolution #{res.inspect}. Valid: #{VALID_RESOLUTIONS.join(', ')}"
+      raise ArgumentError, format(MSG_INVALID_RESOLUTION, res.inspect)
     end
   end
 end

@@ -32,6 +32,9 @@ module SmoOsBngGrids
 
   QUADRANTS = %w[SW SE NW NE].freeze
 
+  MSG_INVALID_RESOLUTION = "Unknown resolution %s. Valid: #{VALID_RESOLUTIONS.join(', ')}"
+  MSG_PROVIDE_RADIUS_OR_BOX = "Provide radius: or box: (not both)"
+
   # Quadrant offsets [easting_offset, northing_offset] from parent SW corner.
   QUADRANT_OFFSETS = {
     "SW" => [0,      0],
